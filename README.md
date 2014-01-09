@@ -24,7 +24,7 @@ Requirements: Vim 7.2.051 or above.
 
      ```
      $ mkdir -p ~/.vim/bundle
-     $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+     $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
      ```
 
 2. Configure bundles:
@@ -78,3 +78,18 @@ Requirements: Vim 7.2.051 or above.
 ## Docs
 
 see `:h neobundle`
+
+
+## Tips
+
+If you use a single .vimrc across systems where build programs are
+named differently (e.g. GNU Make is often `gmake` on non-GNU
+systems), the following pattern is useful:
+
+```vim
+let g:make = 'gmake'
+if system('uname -o') =~ '^GNU/'
+        let g:make = 'make'
+endif
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': g:make}}
+```
